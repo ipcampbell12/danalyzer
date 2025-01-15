@@ -21,7 +21,8 @@ class DataTaskManager:
             "downloads_folder":Path(r"C:\Users\inpcampbell\Downloads"),
             "elpa_cards":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\ELPA Testing Cards"),
             "eld_enrollment_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\ELD Class Enrollment"),
-            "fake_data_folder":Path(r"C:\Users\inpcampbell\Desktop\Fake Data")
+            "fake_data_folder":Path(r"C:\Users\inpcampbell\Desktop\Fake Data"),
+            "grouped_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Grouped Files")
         }
 
         # Dictionary containing complex properties for each task

@@ -1,5 +1,5 @@
 from openpyxl import load_workbook
-from openpyxl.styles import Alignment
+from openpyxl.styles import Alignment,Color
 
 def adjust_column_widths(file_path, max_width=50):
     """
@@ -41,6 +41,9 @@ def adjust_column_widths(file_path, max_width=50):
                 ws.column_dimensions[column].width = adjusted_width
         # Freeze the top row
         ws.freeze_panes = 'A2'
+        if "Red Flag" in sheet_name:
+            ws.sheet_properties.tabColor = "FF0000"
+            
     print("All column widths adjusted.")
     wb.save(file_path)
 

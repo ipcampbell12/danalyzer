@@ -107,7 +107,7 @@ ps_images_info = [
 sassie_images_info = [
     {"path": signature_image, "x": 402, "y": 610, "width": 150, "height": 200, "page_num": 1},  # Signature on second page if exists
     {"path": seal_image, "x": 410, "y": 650, "width": 125, "height": 125, "page_num": 0},  # Seal on first page
-    {"path": seal_image, "x": 410, "y": 650, "width": 125, "height": 125, "page_num": 1}   # Seal on second page if exists
+    {"path": seal_image, "x": 440, "y": 650, "width": 125, "height": 125, "page_num": 1}   # Seal on second page if exists
 ]
 upper_sassie_images_info = [
     {"path": signature_image, "x": 394, "y": 617, "width": 150, "height": 200, "page_num": 1},  # Signature on second page if exists
@@ -134,3 +134,4 @@ def proccess_transcript(transcript_file,processed_transcripts_folder):
             print(f"Error moving file: {e}")
 
 
+# proccess_transcript("BO Transcript.pdf",r"C:\Users\inpcampbell\Desktop\Processing Output\Processed Transcripts")

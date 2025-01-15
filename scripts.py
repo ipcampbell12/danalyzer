@@ -9,6 +9,7 @@ from discipline_app import audit_discipline_discrepancies
 from transcript_app import proccess_transcript
 from mail_merge_app import create_mail_merge
 from interview_runner import interview_tester
+from group_by import group_by_spreadsheet
 
 manager = DataTaskManager()
 folders = manager.return_folders()
@@ -105,5 +106,15 @@ SCRIPTS = {
             "Submission sheet"
         ],
         "destination_folders": []
+    },
+    "Group a Spreadsheet": {
+        "function": group_by_spreadsheet,
+        "source_folders": [
+            (folders['powerschool_folder'],1)
+        ],
+        "helper_messages": [
+            "File to group",
+        ],
+        "destination_folders": [folders["grouped_folder"]]
     },
 }
