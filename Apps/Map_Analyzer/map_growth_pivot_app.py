@@ -1,6 +1,19 @@
 import pandas as pd
 
-def create_ordered_pivot_table(df, term, subject, grade_level=0, row_order=None, column_order=None, ethnicity_cols=None, other_cols=None, race_cols=None):
+def create_ordered_pivot_table(
+    df,
+    term,
+    subject,
+    grade_level=0,
+    row_order=None,
+    column_order=None,
+    ethnicity_cols=None,
+    other_cols=None,
+    race_cols=None,
+    risk_mapping=None,
+    quintile_select=None,
+    risk_col_name="RiskLevel"  # <-- Add this parameter
+):
     print("Pivot function running")
     print("Here it is before filtering")
     print(df.shape)
@@ -26,22 +39,27 @@ def create_ordered_pivot_table(df, term, subject, grade_level=0, row_order=None,
     print("The df was not empty")
     print("Here it is after filtering")
     print(filtered_df.shape)
-    # Map AchievementQuintile to risk levels
-    risk_mapping = {
-        'High': 'Low Risk',
-        'HiAvg': 'Low Risk',
-        'Avg': 'Some Risk',
-        'LoAvg': 'Some Risk',
-        'Low': 'High Risk'
-    }
 
-    quintile_select = {
-        "Fall": "AchievementQuintile",
-        "Winter": "FallToWinterGrowthQuintile",
-        "Spring": "FallToSpringGrowthQuintile"
-    }
+    # --- Dynamic RiskLevel assignment ---
+    # Set defaults if not provided
+    if risk_mapping is None:
+        risk_mapping = {
+            'High': 'Low Risk',
+            'HiAvg': 'Low Risk',
+            'Avg': 'Some Risk',
+            'LoAvg': 'Some Risk',
+            'Low': 'High Risk'
+        }
+    if quintile_select:
+        quintile_select = {
+            "Fall": "AchievementQuintile",
+            "Winter": "FallToWinterGrowthQuintile",
+            "Spring": "FallToSpringGrowthQuintile"
+        }
 
-    filtered_df['RiskLevel'] = filtered_df[quintile_select[term]].map(risk_mapping)
+    # Assign risk level to a dynamic column name
+    filtered_df[risk_col_name] = filtered_df[quintile_select[term]].map(risk_mapping)
+    # --- End dynamic RiskLevel assignment ---
 
     # Create MoreThanOneRace column
     filtered_df['MoreThanOneRace'] = filtered_df[race_cols].sum(axis=1) >= 2
@@ -54,7 +72,7 @@ def create_ordered_pivot_table(df, term, subject, grade_level=0, row_order=None,
     print(other_cols)
     # Melt the filtered dataframe for categorical columns including 'WhiteNotHisp' and 'MoreThanOneRace'
     melted_categorical = filtered_df.melt(
-        id_vars=["RiskLevel"],
+        id_vars=[risk_col_name],
         value_vars=melt_columns,
         var_name='Category',
         value_name='Value'
@@ -84,7 +102,7 @@ def create_ordered_pivot_table(df, term, subject, grade_level=0, row_order=None,
     # Create a pivot table for categorical columns with sum aggregation
     pivot_categorical = melted_categorical.pivot_table(
         index='Category',
-        columns='RiskLevel',
+        columns=risk_col_name,
         values='Value',
         aggfunc='sum',
         fill_value=0
@@ -96,7 +114,7 @@ def create_ordered_pivot_table(df, term, subject, grade_level=0, row_order=None,
     # Calculate total students for the entered grade level by risk level
     grade_level_risk = filtered_df.pivot_table(
         index=["EnrlGrdCd"],
-        columns='RiskLevel',
+        columns=risk_col_name,
         aggfunc='size',
         fill_value=0
     )
@@ -104,8 +122,9 @@ def create_ordered_pivot_table(df, term, subject, grade_level=0, row_order=None,
     # Rename the index from grade_level to 'Total Students'
     grade_level_risk.index = [f'All Grade {grade_level} students']
     
-    # Ensure all risk levels are present
-    for col in ["Low Risk", "Some Risk", "High Risk"]:
+    # Ensure all risk levels from the mapping are present
+    expected_risk_levels = set(risk_mapping.values())
+    for col in expected_risk_levels:
         if col not in grade_level_risk.columns:
             grade_level_risk[col] = 0
 

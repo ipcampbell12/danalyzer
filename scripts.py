@@ -1,6 +1,7 @@
 import sys
 import os
 from task_manager import DataTaskManager
+<<<<<<< HEAD
 from Apps.ods_validator_app import validate_ods
 from Apps.eld_enrollment_app import validate_eld_enrollment
 from Apps.el_graduation_app import monitor_el_graduation
@@ -19,12 +20,24 @@ from Apps.update_standards_app import update_standards
 from Apps.course_pivoting_app import pivot_courses
 from Apps.eighth_grade_credits_app import process_math_credits
 
+=======
+from ods_validator_app import validate_ods
+from eld_enrollment_app import validate_eld_enrollment
+from el_graduation_app import monitor_el_graduation
+from class_size_app import generate_class_size_lists
+from discipline_app import audit_discipline_discrepancies
+from transcript_app import proccess_transcript
+from mail_merge_app import create_mail_merge
+from interview_runner import interview_tester
+from group_by import group_by_spreadsheet
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
 
 manager = DataTaskManager()
 folders = manager.return_folders()
 
 # Dictionary of scripts and their required source folder keys
 SCRIPTS = {
+<<<<<<< HEAD
      "Process 8th Grade Credits":{
         "function": process_math_credits,
         "source_folders": [
@@ -140,6 +153,8 @@ SCRIPTS = {
         ],
         "destination_folders": [folders['map_output_folder']]
      },
+=======
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
     "Validate ELD Enrollment": {
         "function": validate_eld_enrollment,
         "source_folders": [
@@ -147,7 +162,11 @@ SCRIPTS = {
         ],
         "helper_messages": [
             "EL Students file",
+<<<<<<< HEAD
             "ELD Classes file",
+=======
+            "ELD Classes file"
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
         ],
         "destination_folders": [folders['eld_enrollment_folder']]
     },
@@ -199,8 +218,12 @@ SCRIPTS = {
     "Audit Class Size": {
         "function": generate_class_size_lists,
         "source_folders": [
+<<<<<<< HEAD
             (folders['powerschool_folder'],2),
             (folders['ode'],1)
+=======
+            (folders['powerschool_folder'],3)
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
         ],
         "helper_messages": [
             "Primary enrollments file",
@@ -240,6 +263,7 @@ SCRIPTS = {
         "helper_messages": [
             "File to group",
         ],
+<<<<<<< HEAD
         "destination_folders": [folders["grouped_folder"]],
         "additioanal_inputs":[
              {
@@ -252,4 +276,8 @@ SCRIPTS = {
     },
  
 
+=======
+        "destination_folders": [folders["grouped_folder"]]
+    },
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
 }

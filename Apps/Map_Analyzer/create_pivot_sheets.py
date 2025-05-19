@@ -27,8 +27,18 @@ def create_pivot_sheets(map_df, output_pivot_file):
                          print("There is it is in the pivot sheets function")
                          print(map_df.shape)
                          result_pivot_df = create_ordered_pivot_table(
-                              map_df, term, subject, grade, row_order=row_order_list, column_order=column_order,
-                              ethnicity_cols=ethnicity_columns, other_cols=other_columns,race_cols=race_cols
+                              map_df,
+                              term,
+                              subject,
+                              grade,
+                              row_order=row_order_list,
+                              column_order=column_order,
+                              ethnicity_cols=ethnicity_columns,
+                              other_cols=other_columns,
+                              race_cols=race_cols,
+                              risk_mapping=None,         # or provide your custom mapping
+                              quintile_select=None,      # or provide your custom selector
+                              risk_col_name="RiskLevel"  # or your custom column name
                          )
                          
                          
@@ -43,7 +53,7 @@ def create_pivot_sheets(map_df, output_pivot_file):
 
                          # Add some space between pivot tables, assuming each pivot table is about 15 rows tall
                          start_row += len(result_pivot_df) + 2
-                    
-   
-     
-    
+
+
+
+

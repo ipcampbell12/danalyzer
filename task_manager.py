@@ -1,14 +1,20 @@
 import pyperclip
 from pathlib import Path
+<<<<<<< HEAD
 import pandas as pd
+=======
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
 
 class DataTaskManager:
     def __init__(self):
 
         self.folders = {
+<<<<<<< HEAD
             "dessa_folder":Path(r"C:\Users\inpcampbell\Desktop\DESSA"),
             "clever_folder":Path(r"C:\Users\inpcampbell\Desktop\Clever"),
             "audits_output_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Audits Folder"),
+=======
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
             "transcripts_folder": Path(r"C:\Users\inpcampbell\Desktop\Transcripts"),
             "assets_folder": Path(r"C:\Users\inpcampbell\Desktop\Danalyzer\Assets"),
             "sealed_transcripts_folder": Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Processed Transcripts"),
@@ -21,12 +27,17 @@ class DataTaskManager:
             "yearly_numbers_folder ": Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Yearly Numbers"),
             "discipline_folder": Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Discipline Discrepancies"),
             "aperture_folder": Path(r"C:\Users\inpcampbell\Desktop\Aperture"),
+<<<<<<< HEAD
             "general_output_folder": Path(r"C:\Users\inpcampbell\Desktop\Processing Output\General Output"),
             # "dessa_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\DESSA Reports"),
+=======
+            "dessa_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\DESSA Reports"),
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
             "downloads_folder":Path(r"C:\Users\inpcampbell\Downloads"),
             "elpa_cards":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\ELPA Testing Cards"),
             "eld_enrollment_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\ELD Class Enrollment"),
             "fake_data_folder":Path(r"C:\Users\inpcampbell\Desktop\Fake Data"),
+<<<<<<< HEAD
             "grouped_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Grouped Files"),
             "stamp_folder":Path(r"C:\Users\inpcampbell\Desktop\STAMP"),
             "audits_folder":Path(r"C:\Users\inpcampbell\Desktop\Audits"),
@@ -38,6 +49,11 @@ class DataTaskManager:
             "avid_folder":Path(r"C:\Users\inpcampbell\Desktop\PowerSchool\AVID Data Analysis"),
         }
         self.language_lookup = Path(r"C:\Users\inpcampbell\Desktop\ODE\Language Codes.xlsx")
+=======
+            "grouped_folder":Path(r"C:\Users\inpcampbell\Desktop\Processing Output\Grouped Files")
+        }
+
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
         # Dictionary containing complex properties for each task
         self.task_dict = {
             "Find Discipline Discrepancies": {
@@ -76,12 +92,15 @@ class DataTaskManager:
                 "query": "class_size_query",
                 "folders": ["powerschool_folder", "class_size_folder"]
             },
+<<<<<<< HEAD
             "Group By App": {
                 "script": "group_by_app.py",
                 "fields": "group_by_fields",
                 "query": "class_size_query",
                 "folders": ["powerschool_folder"]
             },
+=======
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
         }
 
     def get_script(self, task_name):
@@ -91,6 +110,7 @@ class DataTaskManager:
             return task["script"]
         else:
             return "Script not found."
+<<<<<<< HEAD
     
     def lookup_language(self, code):
         try:
@@ -104,6 +124,8 @@ class DataTaskManager:
         except Exception as e:
             print(f"Error: {e}")
             return None
+=======
+>>>>>>> 8a62c288c787e2496f36739d0a2a3a91789d9b12
 
     def get_fields(self, task_name):
         """Retrieve the fields associated with the given task name."""
