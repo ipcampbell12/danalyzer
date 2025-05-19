@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from Helpers.map_config import ethnicity_columns, other_columns, column_order,race_cols
+from Helpers.map_config import ethnicity_columns, other_columns, column_order,race_cols,map_goal_mapping,quintile_select
 from Helpers.other_funcs import row_order_getter
 
 # print(os.listdir())
@@ -36,9 +36,9 @@ def create_pivot_sheets(map_df, output_pivot_file):
                               ethnicity_cols=ethnicity_columns,
                               other_cols=other_columns,
                               race_cols=race_cols,
-                              risk_mapping=None,         # or provide your custom mapping
-                              quintile_select=None,      # or provide your custom selector
-                              risk_col_name="RiskLevel"  # or your custom column name
+                              risk_mapping=map_goal_mapping,         # or provide your custom mapping
+                              term_column_map=None,                  # updated parameter name
+                              risk_col_name="MetGoal"                # or your custom column name
                          )
                          
                          

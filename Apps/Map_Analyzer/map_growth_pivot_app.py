@@ -11,8 +11,8 @@ def create_ordered_pivot_table(
     other_cols=None,
     race_cols=None,
     risk_mapping=None,
-    quintile_select=None,
-    risk_col_name="RiskLevel"  # <-- Add this parameter
+    term_column_map=None,  # <-- renamed parameter
+    risk_col_name="RiskLevel"
 ):
     print("Pivot function running")
     print("Here it is before filtering")
@@ -50,15 +50,15 @@ def create_ordered_pivot_table(
             'LoAvg': 'Some Risk',
             'Low': 'High Risk'
         }
-    if quintile_select:
-        quintile_select = {
+    if term_column_map is None:
+        term_column_map = {
             "Fall": "AchievementQuintile",
             "Winter": "FallToWinterGrowthQuintile",
             "Spring": "FallToSpringGrowthQuintile"
         }
 
     # Assign risk level to a dynamic column name
-    filtered_df[risk_col_name] = filtered_df[quintile_select[term]].map(risk_mapping)
+    filtered_df[risk_col_name] = filtered_df[term_column_map[term]].map(risk_mapping)
     # --- End dynamic RiskLevel assignment ---
 
     # Create MoreThanOneRace column
