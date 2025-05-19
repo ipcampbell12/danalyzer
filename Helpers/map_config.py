@@ -114,7 +114,7 @@ y_and_n_cols = [
     "InDualFg"
 ]
 
-isk_mapping = {
+map_risk_mapping = {
         'High': 'Low Risk',
         'HiAvg': 'Low Risk',
         'Avg': 'Some Risk',
@@ -126,4 +126,9 @@ quintile_select = {
     "Fall": "AchievementQuintile",
     "Winter": "FallToWinterGrowthQuintile",
     "Spring": "FallToSpringGrowthQuintile"
+}
+
+map_goal_mapping = {
+    "Met Goal": "Met",
+    "Did Not Meet Goal": "Not Met",
 }

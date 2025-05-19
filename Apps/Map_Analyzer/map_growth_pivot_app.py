@@ -50,7 +50,7 @@ def create_ordered_pivot_table(
             'LoAvg': 'Some Risk',
             'Low': 'High Risk'
         }
-    if quintile_select is None:
+    if quintile_select:
         quintile_select = {
             "Fall": "AchievementQuintile",
             "Winter": "FallToWinterGrowthQuintile",
@@ -125,11 +125,6 @@ def create_ordered_pivot_table(
     # Ensure all risk levels from the mapping are present
     expected_risk_levels = set(risk_mapping.values())
     for col in expected_risk_levels:
-        if col not in grade_level_risk.columns:
-            grade_level_risk[col] = 0
-
-    # Ensure all risk levels are present
-    for col in ["Low Risk", "Some Risk", "High Risk"]:
         if col not in grade_level_risk.columns:
             grade_level_risk[col] = 0
 
