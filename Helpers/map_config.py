@@ -30,7 +30,7 @@ rows_to_highlight =[
 columns_to_keep = [
     'TermName', 'DistrictName', 'SchoolName', 'StudentID', 'Student_StateID', 'Subject', 'Course', "TestName",
     "TestRITScore", "AchievementQuintile", "FallToWinterConditionalGrowthIndex", "FallToWinterGrowthQuintile", "FallToWinterConditionalGrowthPercentile",
-    "FallToSpringConditionalGrowthIndex", "FallToSpringGrowthQuintile", "FallToSpringConditionalGrowthPercentile"
+    "FallToSpringConditionalGrowthIndex", "FallToSpringGrowthQuintile", "FallToSpringConditionalGrowthPercentile",
 ]
 
 fluency_cols = [
@@ -130,5 +130,5 @@ quintile_select = {
 
 map_goal_mapping = {
     "Met Goal": "Met",
-    "Did Not Meet Goal": "Not Met",
+    "Did not Meet": "Not Met",
 }

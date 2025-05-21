@@ -37,7 +37,7 @@ def create_pivot_sheets(map_df, output_pivot_file):
                               other_cols=other_columns,
                               race_cols=race_cols,
                               risk_mapping=map_goal_mapping,         # or provide your custom mapping
-                              term_column_map=None,                  # updated parameter name
+                              term_column_map="goalStatus",                  # updated parameter name
                               risk_col_name="MetGoal"                # or your custom column name
                          )
                          

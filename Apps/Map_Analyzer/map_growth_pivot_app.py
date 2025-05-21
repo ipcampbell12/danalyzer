@@ -15,6 +15,7 @@ def create_ordered_pivot_table(
     risk_col_name="RiskLevel"
 ):
     print("Pivot function running")
+    print("Type of df:", type(df))
     print("Here it is before filtering")
     print(df.shape)
     print(f"Size before filtering: {df.shape}")
@@ -57,8 +58,13 @@ def create_ordered_pivot_table(
             "Spring": "FallToSpringGrowthQuintile"
         }
 
+    print("term_column_map:", term_column_map)
+    print("Using column:", term_column_map[term])
+    print("Unique values in that column:", filtered_df[term_column_map[term]].unique())
+
     # Assign risk level to a dynamic column name
     filtered_df[risk_col_name] = filtered_df[term_column_map[term]].map(risk_mapping)
+    print("Unique values in risk_col_name after mapping:", filtered_df[risk_col_name].unique())
     # --- End dynamic RiskLevel assignment ---
 
     # Create MoreThanOneRace column

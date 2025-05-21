@@ -140,6 +140,19 @@ SCRIPTS = {
         ],
         "destination_folders": [folders['map_output_folder']]
      },
+     "General Dissag Function": {
+           "function": process_map_growth_data,
+        "source_folders": [
+            (folders['map_folder'], 1),
+            (folders['powerschool_folder'], 2)
+        ],
+        "helper_messages": [
+            "Select the MAP Growth file to process",
+            "Select PowerSchool demographics file",
+            "Select PowerSchool language program file"
+        ],
+        "destination_folders": [folders['map_output_folder']]
+     },
     "Validate ELD Enrollment": {
         "function": validate_eld_enrollment,
         "source_folders": [
