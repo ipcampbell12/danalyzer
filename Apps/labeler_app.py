@@ -30,16 +30,16 @@ cols_to_keep = [
 ]
 
 school_lookup = {
-     796: "Nellie",
-     797: "Washington",
-     1267: "Lincoln",
-     1359: "Heritage",
+     796: 'Nellie Muir Elementary',
+     797: 'Washington Elementary',
+     1267: 'Lincoln Elementary',
+     1359: 'Heritage Elementary',
      4230: "Arthur Academy",
-     1268: "French Prairie",
-     1360: "Valor",
-     800: "WHS",
-     4544: "Success",
-     95: "WCP - HS Students",
+     1268: "French Prairie Middle School",
+     1360:  'Valor Middle School',
+     800: "Woodburn High School",
+     4544:  'Woodburn Success High School',
+     95: 'WSD Continuation Programs',
      4540: "AIS",
      4543: "WACA",
      4541: "WEBSS",
@@ -193,20 +193,20 @@ for year in school_years.keys():
 
 
 
-def distribute_by_school(data_path):
+def distribute_by_school(data_path,name):
     """
     Distributes the processed data by school into separate Excel files.
     """
 
-    merged_data = pd.read_excel(data_path)
+    merged_data = pd.read_excel(data_path,sheet_name="Combined ELPA (Corrected)")
 
-    dest_folder= r"C:\Users\inpcampbell\Desktop\ODE\Historical Assessment Data\Historical OSAS Results\Processed Results"
+    dest_folder= r"C:\Users\inpcampbell\Desktop\ODE\Historical Assessment Data\Historical ELPA Results\Processed Results"
 
     for school in school_lookup.values():
-        school_data = merged_data[merged_data["most_recent_school"] == school]
-        school_data = school_data.sort_values(["lgllnm", "lglfnm",], ascending=True)
+        school_data = merged_data[merged_data["Last School"] == school]
+        school_data = school_data.sort_values(["Last Name", "First Name",], ascending=True)
         if not school_data.empty:
-            output_file = os.path.join(dest_folder, f"Processed OSAS Results {school}.xlsx")
+            output_file = os.path.join(dest_folder, f"Processed {name} Results {school}.xlsx")
             
             # Ensure date columns are formatted as mm/dd/yyyy
             date_columns = [col for col in school_data.columns if "date" in col.lower()]
@@ -276,5 +276,11 @@ def merge_with_current(combined_data_path,current_school_path=cur_school_path):
 
 # combine_and_process_school_year_files(school_years, path)
 # merge_with_current(os.path.join(path, "Processed OSAS Results Combined.xlsx"), cur_school_path)
-distribute_by_school(os.path.join(path, "Processed OSAS Results Combined.xlsx"))
+# file_path = os.path.join(path, "Maxified OSAS 5-14-25.xlsx")
+file_path=r"C:\Users\inpcampbell\Desktop\ODE\Historical Assessment Data\Historical ELPA Results\Combined ELPA (5-28-2025).xlsx"
+distribute_by_school(file_path,"ELPA")
 # generate_labels()
+
+# test_df = pd.read_excel(file_path, sheet_name="All Years OSAS")
+# last_school_unique_list = test_df["Last School"].unique()
+# print(f"Unique schools in the last school column:{last_school_unique_list}")

@@ -44,15 +44,15 @@ def maxify_spreadsheet(file_path_max, sheet_name, final_name, maxify_col, dest_f
 # Example usage
 manager = DataTaskManager()
 # folder_loc ="map_folder"
-folder = manager.return_folders()["map_folder"]
-path = os.path.join(folder, "24-25 Fall MAP Growth Results.xlsx")
-sheet_name = "Fall Reading"
-final_name = "Fall MAP Growth"
-maxify_col = "Fall TestRITScore"
-ref_col = "StudentID"
+folder = manager.return_folders()["ode"]
+path = os.path.join(folder, "Misc3.xlsx")
+sheet_name = "Misc3"
+final_name = "Misc3"
+maxify_col = "ExitDate"
+ref_col = "[students]student_number"
 
 # Call with isDate=True for datetime columns
-maxify_spreadsheet(path, sheet_name, final_name, maxify_col, folder, ref_col, isDate=False)
+maxify_spreadsheet(path, sheet_name, final_name, maxify_col, folder, ref_col, isDate=True)
 
 # Example for non-datetime columns
 # maxify_spreadsheet(path, sheet_name, final_name, "SomeOtherColumn", folder, ref_col, isDate=False)

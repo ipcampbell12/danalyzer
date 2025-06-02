@@ -142,7 +142,7 @@ def protect_pdf(input_pdf, password):
 # Move the output file to a new folder
 
 def proccess_transcript(transcript_file,processed_transcripts_folder):
-    output_file = add_images_to_pdf(transcript_file, ps_images_info, add_date=False)
+    output_file = add_images_to_pdf(transcript_file, sassie_images_info, add_date=False)
     # password = "password1"
     # protect_pdf(output_file,password)
     if output_file:

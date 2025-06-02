@@ -218,7 +218,7 @@ SCRIPTS = {
         "helper_messages": [
             "Primary enrollments file",
             "Secondary enrollments file",
-            "IUID file",
+            "Course Name file",
         ],
         "destination_folders": [folders['class_size_folder']]
     },
