@@ -61,7 +61,7 @@ def analyze_class_sizes(classes_df,course_name_df, quarter, semester,mini, schoo
             print(f"Filtered for quarter {quarter} and semester {semester} and school year {school_year} and mini{mini}")
             # Write each school’s data to a separate sheet
             # when sorting, need to assign it back to the school_df variable
-            school_df = school_df.sort_values(by=["Teacher Name","Course Name"])
+            school_df = school_df.sort_values(by=["Expression","Teacher Name","Course Name"])
             # school_df.drop(columns=["Student Count","SchlCrsID"],inplace=True)
             school_df.to_excel(writer, sheet_name=f"{school}-{current_month}", index=False)
             print(f"Data written for school: {school}")

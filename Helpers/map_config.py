@@ -124,8 +124,8 @@ map_risk_mapping = {
 
 quintile_select = {
     "Fall": "AchievementQuintile",
-    "Winter": "FallToWinterGrowthQuintile",
-    "Spring": "FallToSpringGrowthQuintile"
+    "Winter": "AchievementQuintile",
+    "Spring": "AchievementQuintile"
 }
 
 map_goal_mapping = {

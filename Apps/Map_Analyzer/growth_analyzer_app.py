@@ -20,7 +20,7 @@ def process_map_growth_data(fall_map_input,winter_map_input,spring_map_input,ps_
     output_pivot_file = dest_folder / f'Disaggregated Growth Pivots - {return_date()}.xlsx'
     # COMMENT OUT THIS CODE IF YOU ALREADY MADE THE MERGED SHEET
  
-    # combine_excel_workbooks([fall_map_input,winter_map_input,spring_map_input], output_merged_file, columns_to_keep, ps_file,lang_file)
+    combine_excel_workbooks([fall_map_input,winter_map_input,spring_map_input], output_merged_file, columns_to_keep, ps_file,lang_file)
 
     map_df = pd.read_excel(output_merged_file, index_col=None)
     print(map_df.head())

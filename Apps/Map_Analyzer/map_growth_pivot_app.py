@@ -54,8 +54,8 @@ def create_ordered_pivot_table(
     if term_column_map is None:
         term_column_map = {
             "Fall": "AchievementQuintile",
-            "Winter": "FallToWinterGrowthQuintile",
-            "Spring": "FallToSpringGrowthQuintile"
+            "Winter": "AchievementQuintile",
+            "Spring": "AchievementQuintile"
         }
 
     print("term_column_map:", term_column_map)
@@ -102,7 +102,7 @@ def create_ordered_pivot_table(
         'EconDsvntgFg': 'EconDisadvantaged',
         'MoreThanOneRace': 'Two or More Races',
         'WhiteNotHisp': 'White Not Hispanic',
-        "InDualFg":"In Dual Language Program"
+        # "InDualFg":"In Dual Language Program"
     })
 
     # Create a pivot table for categorical columns with sum aggregation

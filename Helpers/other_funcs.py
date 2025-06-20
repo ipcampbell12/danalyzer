@@ -3,6 +3,8 @@ import pandas as pd
 from Helpers.columns import adjust_column_widths
 from datetime import date
 import calendar
+import openpyxl
+from openpyxl.styles import PatternFill
 
 
 def delete_files_in_directory(directory_path):
@@ -76,3 +78,50 @@ def return_date():
     date_string = f"{current_month} {year}"
     return date_string
 
+def process_date_text(rowValue):
+    if pd.isna(rowValue) or str(rowValue).strip().lower() in ["", "nan"]:
+        return ""
+    
+    # If the value is a float and ends with .0, convert to int first
+    if isinstance(rowValue, float) and rowValue.is_integer():
+        rowValue = str(int(rowValue))
+    else:
+        rowValue = str(rowValue).strip().replace('.0', '')
+
+    if len(rowValue) == 7:
+        month = "0" + rowValue[0]
+        day = rowValue[1:3]
+        year = rowValue[-4:]
+    elif len(rowValue) == 8:
+        month = rowValue[:2]
+        day = rowValue[2:4]
+        year = rowValue[-4:]
+    else:
+        print(f"Unexpected date format: {rowValue}")
+        return ""
+    
+    return f"{month}/{day}/{year}"
+
+def highlight_invalid_rows(excel_path, valid_record_col='Valid Record'):
+    wb = openpyxl.load_workbook(excel_path)
+    ws = wb.active
+
+    # Find the column index for 'Valid Record'
+    header = [cell.value for cell in ws[1]]
+    col_idx = header.index(valid_record_col) + 1  # openpyxl is 1-based
+
+    red_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
+
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+        valid_record_cell = row[col_idx - 1]
+        if valid_record_cell.value and str(valid_record_cell.value).strip() != "":
+            for cell in row:
+                cell.fill = red_fill
+
+    wb.save(excel_path)
+
+# After saving your DataFrame:
+# discipline_df.to_excel(dest_path, index=False)
+# highlight_invalid_rows(dest_path)
+# adjust_column_widths(dest_path)
+# print(f"Validated discipline data saved to {dest_path}")

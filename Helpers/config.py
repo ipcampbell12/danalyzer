@@ -162,3 +162,12 @@ credits = {
     "Spanish 2": "AFF124",
     "Spanish 1": "AFF123"
 }
+
+
+discipline_cols = [
+     "DistStdntID","LglLNm","LglFNm","AttndSchlInstID","DistIncdntID",
+    "DsplnDtTxt", "DsplnActnTypCd", "DistIncdntID", "PrimOffnsTypCd", "SecOffnsTypCd", 
+    "TertOffnsTypCd", "PrimWpnTypCd", "SecWpnTypCd", "TertWpnTypCd", "DsplnModCd", 
+    "DsplnDays", "IntrmSrvcFg", "VlntCrmnlOffnsFg", "DsplnIncdntDtTxt", "DsplnFill", 
+    "Dateified Discipline Date", "Dateified Discipline Incident Date", "Valid Record"
+]
